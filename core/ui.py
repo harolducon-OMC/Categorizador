@@ -106,7 +106,10 @@ button[data-baseweb="tab"] { min-height:2.8rem; }
 button[data-baseweb="tab"] p { color:#475569 !important; font-weight:600; white-space:normal; line-height:1.35 !important; }
 button[data-baseweb="tab"][aria-selected="true"] p { color:#1D4ED8 !important; }
 [data-testid="stDataFrame"], [data-testid="stTable"] { border:1px solid #E1E7F0; border-radius:10px; overflow:hidden; }
+.insights-footer { position:fixed; left:0; right:0; bottom:0; z-index:999999; display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:.65rem clamp(1rem,4vw,3.5rem); background:rgba(16,27,50,.96); color:#E8EEF8; font-size:.82rem; border-top:1px solid rgba(255,255,255,.14); box-shadow:0 -4px 18px rgba(15,23,42,.12); }
+.insights-footer span { color:#E8EEF8 !important; -webkit-text-fill-color:#E8EEF8 !important; }
 @media(max-width:700px) { .block-container { padding:1.3rem .9rem 2rem !important; } h1 { font-size:1.9rem !important; } }
+@media(max-width:460px) { .insights-footer { font-size:.72rem; padding:.6rem .75rem; } }
 </style>
 """
 @lru_cache(maxsize=1)
@@ -120,6 +123,11 @@ def setup_page(title: str, icon: str = "📊") -> None:
     st.set_page_config(page_title=f"{title} · {APP_NAME}", page_icon=str(LOGO_PATH) if LOGO_PATH.exists() else icon, layout="wide")
     state.init()
     st.markdown(CSS.replace("__BG__", _background_css()), unsafe_allow_html=True)
+    st.markdown(
+        '<div class="insights-footer"><span>Creado por el equipo Research</span>'
+        '<span>© Harold Ducon</span></div>',
+        unsafe_allow_html=True,
+    )
 def require_login() -> None:
     """Exige un usuario y una contraseña configurados en Streamlit Secrets."""
     username = state.get_secret("APP_USERNAME")
