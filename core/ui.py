@@ -237,8 +237,7 @@ def sidebar() -> None:
                         st.success(f"Conexión correcta con {config['name']}.")
                 except Exception as exc:
                     st.error(str(exc))
-        st.caption("GitHub public-apis y PublicAPIs.io son directorios, no APIs de modelos de IA.")
-        st.caption(f"{len(st.session_state.get('coded', {}))} pregunta(s) categorizada(s)")
+       st.caption(f"{len(st.session_state.get('coded', {}))} pregunta(s) categorizada(s)")
 def style_fig(fig, height: int = 460):
     """Tema claro legible para dashboards profesionales."""
     fig.update_layout(template="plotly_white", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
