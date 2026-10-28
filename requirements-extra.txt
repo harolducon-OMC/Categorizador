@@ -1,0 +1,4 @@
+# Opcional: BERTopic y validación con embeddings multilingües (instala torch: ~2 GB en local).
+# En Streamlit Community Cloud puede exceder la memoria; úsalo en local o en un servidor propio.
+bertopic>=0.16
+sentence-transformers>=3.0

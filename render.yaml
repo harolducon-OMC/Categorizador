@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: plataforma-insights
+    runtime: python
+    plan: 1c-2g
+    region: oregon
+    branch: main
+    buildCommand: pip install -r requirements-render.txt
+    startCommand: streamlit run Home.py --server.address 0.0.0.0 --server.port $PORT
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: PYTHONUNBUFFERED
+        value: "1"

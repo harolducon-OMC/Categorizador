@@ -1,0 +1,9 @@
+streamlit>=1.40,<2.0
+pandas>=2.0,<3.0
+openpyxl>=3.1
+plotly>=5.20
+anthropic>=0.40
+openai>=1.40
+requests>=2.31
+rapidfuzz>=3.6
+scikit-learn>=1.4,<2.0

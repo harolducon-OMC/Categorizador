@@ -1,0 +1,14 @@
+# Secretos: NUNCA subir a GitHub
+.streamlit/secrets.toml
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Datos reales de clientes (no subir)
+*.xlsx
+!sample_data/*.xlsx
+.DS_Store

@@ -1,0 +1,5 @@
+# Entorno de producción Render: app base + BERTopic/embeddings + cat-survey.
+# PyTorch y los modelos semánticos requieren memoria suficiente al ejecutarse.
+-r requirements.txt
+-r requirements-extra.txt
+-r requirements-validation.txt

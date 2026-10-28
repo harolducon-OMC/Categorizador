@@ -1,0 +1,12 @@
+[theme]
+base = "light"
+primaryColor = "#1D4ED8"
+font = "sans serif"
+
+[server]
+maxUploadSize = 25
+enableCORS = true
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
