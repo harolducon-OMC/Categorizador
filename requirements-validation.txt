@@ -1,0 +1,4 @@
+# Integración opcional cat-survey / cat-llm. Versiones fijadas para reproducibilidad.
+# Ambos paquetes declaran licencia GPL-3.0-or-later; revisar obligaciones antes de redistribuir.
+cat-survey==0.4.0
+cat-stack==2.8.1
