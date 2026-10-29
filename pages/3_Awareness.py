@@ -14,6 +14,45 @@ ui.setup_page("Awareness", "🎯")
 ui.require_login()
 ui.sidebar()
 
+# Inyección de CSS estricto para limpiar formularios, textareas, botones e íconos defectuosos
+st.markdown("""
+<style>
+    /* Oculta textos o íconos defectuosos de desplegables y tooltips */
+    [data-testid="stSidebar"] [title], 
+    [data-testid="stSidebarNav"] [title],
+    .stSidebar [title],
+    .streamlit-expanderHeader span {
+        display: none !important;
+    }
+
+    /* Campos claros con texto oscuro para conservar contraste en la página clara. */
+    .stTextArea textarea, .stTextInput input {
+        background-color: #FFFFFF !important;
+        color: #17243A !important;
+        -webkit-text-fill-color: #17243A !important;
+        border: 1px solid #CBD5E1 !important;
+        border-radius: 8px !important;
+    }
+    .stTextArea textarea:focus, .stTextInput input:focus {
+        border-color: #4A90E2 !important;
+        box-shadow: 0 0 0 1px #4A90E2 !important;
+    }
+
+    /* Estilizado limpio para tarjetas/contenedores */
+    div[data-testid="stVerticalBlock"] > div[style*="flex-direction: column;"] {
+        border-radius: 10px;
+    }
+
+    /* Estilizado elegante para bloques de métricas */
+    div[data-testid="stMetric"] {
+        background-color: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 12px 18px;
+        border-radius: 10px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 ui.header("Awareness / Recordación", "TOM, espontáneo y ayudado por marca y segmento.")
 
 df = state.require_data()

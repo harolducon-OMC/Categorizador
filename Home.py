@@ -11,6 +11,80 @@ ui.setup_page("Inicio", "📊")
 ui.require_login()
 ui.sidebar()
 
+# Inyección de CSS avanzado para limpiar tooltips, corregir el botón de carga y estilizar métricas
+st.markdown("""
+<style>
+    /* Oculta de forma radical cualquier tooltip o título flotante en la barra lateral */
+    [data-testid="stSidebar"] [title], 
+    [data-testid="stSidebarNav"] [title],
+    .stSidebar [title] {
+        display: none !important;
+    }
+
+    /* Oculta los iconos y spans internos defectuosos que generan texto duplicado */
+    .stFileUploader section svg,
+    .stFileUploader button div[data-testid="stMarkdownContainer"],
+    .stFileUploader [data-testid="stFileUploadDropzone"] small {
+        display: none !important;
+    }
+
+    /* Forzar limpieza absoluta del texto duplicado en el botón de carga */
+    .stFileUploader button p {
+        visibility: hidden;
+        position: relative;
+    }
+    
+    /* Reemplazar el texto interno del botón de carga de forma limpia */
+    .stFileUploader button p::after {
+        content: "📁 Examinar archivo";
+        visibility: visible;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white !important;
+        font-weight: 600;
+    }
+
+    /* Estilo limpio para el contenedor de carga */
+    .stFileUploader section {
+        border: 2px dashed rgba(255, 255, 255, 0.25) !important;
+        border-radius: 12px !important;
+        padding: 2rem !important;
+        background-color: rgba(255, 255, 255, 0.02) !important;
+        text-align: center;
+    }
+    .stFileUploader section:hover {
+        border-color: #4A90E2 !important;
+        background-color: rgba(74, 144, 226, 0.05) !important;
+    }
+
+    /* Estilizado elegante para el botón de carga */
+    .stFileUploader button {
+        background-color: #4A90E2 !important;
+        color: transparent !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 0.6rem 1.2rem !important;
+    }
+    .stFileUploader button:hover {
+        background-color: #357ABD !important;
+    }
+
+    /* Estilizado elegante para bloques de métricas */
+    div[data-testid="stMetric"] {
+        background-color: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 12px 18px;
+        border-radius: 10px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 ui.header("Plataforma de Insights", "Convierte respuestas abiertas en hallazgos claros y accionables.")
 
 # 2. Contenedor principal de carga de archivos
